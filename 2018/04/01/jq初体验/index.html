@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>CJ Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: jq初体验date: 2018-04-01 19:09:07tags:  #js实现jquery的某些功能首先通过Window创建一个命名空间，然后将命名空间简化为$符号，然后给创建的命名空间接受调用方法传的选择器和参数返回执行完的结果 addClass通过 document.querySelector接受传进来的选择器，将选择器获取到的元素.classList.add添加传进来的">
+  <meta name="description" content="title: jq初体验date: 2018-04-01 19:09:07tags:  #js实现jquery的某些功能 let首先创建一个let一个nodes对象，用来存放元素返回的数据和可以执行的方法，用let可以让外部无法影响和修改内部的变量，nodes和声明的两个方法分别形成了闭包。 addClass通过dom原生 document.querySelectorAll方法获取到页面所有di">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CJ Blog">
 <meta property="og:url" content="http://yoursite.com/2018/04/01/jq初体验/index.html">
 <meta property="og:site_name" content="CJ Blog">
-<meta property="og:description" content="title: jq初体验date: 2018-04-01 19:09:07tags:  #js实现jquery的某些功能首先通过Window创建一个命名空间，然后将命名空间简化为$符号，然后给创建的命名空间接受调用方法传的选择器和参数返回执行完的结果 addClass通过 document.querySelector接受传进来的选择器，将选择器获取到的元素.classList.add添加传进来的">
-<meta property="og:updated_time" content="2018-04-01T14:43:47.975Z">
+<meta property="og:description" content="title: jq初体验date: 2018-04-01 19:09:07tags:  #js实现jquery的某些功能 let首先创建一个let一个nodes对象，用来存放元素返回的数据和可以执行的方法，用let可以让外部无法影响和修改内部的变量，nodes和声明的两个方法分别形成了闭包。 addClass通过dom原生 document.querySelectorAll方法获取到页面所有di">
+<meta property="og:updated_time" content="2018-04-03T14:18:41.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CJ Blog">
-<meta name="twitter:description" content="title: jq初体验date: 2018-04-01 19:09:07tags:  #js实现jquery的某些功能首先通过Window创建一个命名空间，然后将命名空间简化为$符号，然后给创建的命名空间接受调用方法传的选择器和参数返回执行完的结果 addClass通过 document.querySelector接受传进来的选择器，将选择器获取到的元素.classList.add添加传进来的">
+<meta name="twitter:description" content="title: jq初体验date: 2018-04-01 19:09:07tags:  #js实现jquery的某些功能 let首先创建一个let一个nodes对象，用来存放元素返回的数据和可以执行的方法，用let可以让外部无法影响和修改内部的变量，nodes和声明的两个方法分别形成了闭包。 addClass通过dom原生 document.querySelectorAll方法获取到页面所有di">
   
     <link rel="alternative" href="/atom.xml" title="CJ Blog" type="application/atom+xml">
   
@@ -165,9 +165,11 @@
         <hr>
 <p>title: jq初体验<br>date: 2018-04-01 19:09:07<br>tags:</p>
 <hr>
-<p>#js实现jquery的某些功能<br>首先通过Window创建一个命名空间，然后将命名空间简化为$符号，然后给创建的命名空间接受调用方法传的选择器和参数返回执行完的结果</p>
-<h2 id="addClass"><a href="#addClass" class="headerlink" title="addClass"></a>addClass</h2><p>通过 document.querySelector接受传进来的选择器，将选择器获取到的元素.classList.add添加传进来的类名</p>
-<h2 id="setText"><a href="#setText" class="headerlink" title="setText"></a>setText</h2><p>通过 document.querySelector接受传进来的选择器，将选择器获取到的元素.innerText修改选中元素的文本内容</p>
+<p>#js实现jquery的某些功能</p>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>首先创建一个let一个nodes对象，用来存放元素返回的数据和可以执行的方法，用let可以让外部无法影响和修改内部的变量，nodes和声明的两个方法分别形成了闭包。</p>
+<h2 id="addClass"><a href="#addClass" class="headerlink" title="addClass"></a>addClass</h2><p>通过dom原生 document.querySelectorAll方法获取到页面所有div标签元素，然后通过foreach遍历这些元素，将遍历出来的值通过element原型链上的classList.add方法添加一个类，类名就是传进来的参数</p>
+<h2 id="setText"><a href="#setText" class="headerlink" title="setText"></a>setText</h2><p>setText也是类似，通过document.querySelectorAll方法获取所有div标签，foreach遍历出来后将innerText值改为传进来的需要修改的页面显示文字</p>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>然后在window全局变量中创建一个$命名空间，将刚刚创建的方法赋给$变量，后面需要获取某个元素的值，只需要先用$(选择器)就已经将addClass和setText方法初始化给了这个对象，这个对象只要执行这两个方法便可给获取这个选择器所选取的标签添加一个类或者修改标签中的文字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery =function(selecta)&#123;</span><br><span class="line">  let nodes=&#123;&#125;</span><br><span class="line">  nodes.addClass=function(classes)&#123;</span><br><span class="line">   document.querySelectorAll(selecta).forEach((value)=&gt;&#123;value.classList.add(classes)&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  nodes.setText=function(htmla)&#123;</span><br><span class="line">    document.querySelectorAll(selecta).forEach((value)=&gt;&#123;value.innerText=htmla&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  return nodes</span><br><span class="line">         </span><br><span class="line">&#125;</span><br><span class="line">window.$ = jQuery</span><br><span class="line"></span><br><span class="line">var $div = $(&apos;div&apos;)</span><br><span class="line">$div.addClass(&apos;red&apos;) // 可将所有 div 的 class 添加一个 red</span><br><span class="line">$div.setText(&apos;hi&apos;) // 可将所有 div 的 textContent 变为 hi</span><br></pre></td></tr></table></figure></p>
 
       
 
